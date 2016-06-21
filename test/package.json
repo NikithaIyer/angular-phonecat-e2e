@@ -1,0 +1,13 @@
+{
+  "name": "seconf2016",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "protractor": "^3.3.0",
+    "protractor-jasmine2-screenshot-reporter": "^0.3.1",
+    "gulp": "^3.8.10",
+    "shelljs": "~0.7.0",
+    "wrench": "~1.5.8"
+  },
+  "engine": "node >= v5.0.0"
+}

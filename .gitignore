@@ -1,0 +1,8 @@
+.idea
+
+node_modules
+bower_components
+
+test/node_modules
+test/output
+phantomjsdriver.log
