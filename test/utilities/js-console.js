@@ -1,8 +1,8 @@
 'use strict';
 var fs = require('fs');
 
-var JSErrors = {
-    captureJSErrorsOnPage: function () {
+var JSConsole = {
+    captureJSLogsOnPage: function () {
         browser.manage().logs().get('browser').then(function (browserLog) {
             var i = 0;
             var infoMessages = [],
@@ -21,13 +21,13 @@ var JSErrors = {
                     errorMessages.push(browserLog[i]);
                 }
             }
-            console.log("--> JS Errors on page of type (INFO): " + infoMessages.length);
-            console.log("--> JS Errors on page of type (WARNING): " + warningMessages.length);
-            console.log("--> JS Errors on page of type (ERROR): " + errorMessages.length);
+            console.log("--> JS Console logs on page of type (INFO): " + infoMessages.length);
+            console.log("--> JS Console logs on page of type (WARNING): " + warningMessages.length);
+            console.log("--> JS Console logs on page of type (ERROR): " + errorMessages.length);
             fs.writeFileSync(outputDir + "/consoleError.json", JSON.stringify(errorMessages));
             fs.writeFileSync(outputDir + "/consoleWarning.json", JSON.stringify(warningMessages));
             fs.writeFileSync(outputDir + "/consoleInfo.json", JSON.stringify(infoMessages));
         });
     }
 };
-module.exports = JSErrors;
+module.exports = JSConsole;

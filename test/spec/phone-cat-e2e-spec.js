@@ -2,7 +2,7 @@
 
 var configuration = require(utilsDir + '/configuration');
 var pageUtils = require('../utilities/page-utils');
-var jsErrors = require('../utilities/js-errors');
+var jsConsole = require('../utilities/js-console');
 
 
 describe('PhoneCat Application', function () {
@@ -10,6 +10,10 @@ describe('PhoneCat Application', function () {
     beforeEach(function () {
         browser.get(configuration.get('baseUrl') + 'index.html#!/phones');
         pageUtils.takeScreenShot('home-page');
+    });
+
+    afterEach(function () {
+        jsConsole.captureJSLogsOnPage();
     });
 
     it('should filter the phone list as a user types into the search box', function () {
@@ -47,10 +51,6 @@ describe('PhoneCat Application', function () {
 
         thumbnails.get(0).click();
         expect(mainImage.getAttribute('src')).toMatch(/img\/phones\/nexus-s.0.jpg/);
-
-
-        jsErrors.captureJSErrorsOnPage();
-
 
     });
 
