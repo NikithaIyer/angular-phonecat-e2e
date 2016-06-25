@@ -43,15 +43,29 @@ var reporter = new Jasmine2Reporter({
 });
 
 var firefoxCapabilities = {
-    browserName: 'firefox'
+    browserName: 'firefox',
+    "shardTestFiles": true,
+    "maxInstances": 1,
+    prefs: {
+        'config.http.use-cache': false
+    }
 };
 
 var chromeCapabilities = {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    chromeOptions: {
+        args: [
+            '--show-fps-counter=true'
+        ]
+    },
+    "shardTestFiles": true,
+    "maxInstances": 1
 };
 
 var phantomJSCapabilities = {
-    browserName: 'phantomjs'
+    browserName: 'phantomjs',
+    "shardTestFiles": true,
+    "maxInstances": 1
 };
 
 var invalidBrowserCapabilities = {
