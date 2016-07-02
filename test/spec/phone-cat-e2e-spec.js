@@ -1,21 +1,25 @@
 'use strict';
 
-var pageUtils = require('../utilities/page-utils');
-var jsConsole = require('../utilities/js-console');
-var page = require('../pages/page');
-var homePage = require('../pages/home');
-var detailPage = require('../pages/detail');
+var pageUtils = require(utilsDir + '/page-utils');
+var PerfMetric = require(utilsDir + '/perfMetric');
+var jsConsole = require(utilsDir + '/js-console');
+var page = require(pagesDir + '/page');
+var homePage = require(pagesDir + '/home');
+var detailPage = require(pagesDir + '/detail');
 
+var specName = "PhoneCatApp_spec";
 
 describe('PhoneCat Application', function () {
 
-    beforeEach(function () {
+    beforeEach(function (done) {
+        PerfMetric.startHARCapture(specName, done);
         homePage.visit();
         pageUtils.takeScreenShot('home-page');
     });
 
-    afterEach(function () {
+    afterEach(function (done) {
         jsConsole.captureJSLogsOnPage();
+        PerfMetric.saveHARFile(specName, done);
     });
 
     it('should filter the phone list as a user types into the search box and show details of a selected phone', function () {
